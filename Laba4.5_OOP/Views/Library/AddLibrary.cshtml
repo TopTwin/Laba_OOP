@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "AddLibrary";
+}
+
+<h1>AddLibrary</h1>
+
+<body>
+    <div>
+        <label>Введите название библиотеки</label>
+
+        @using (Html.BeginForm("Add", "Library", FormMethod.Post))
+        {
+            <input type="text" name="name" /><br />
+            <input type="submit" value="Добавить библиотеку" /><br /><br />
+        }
+
+        @using (Html.BeginForm("MainPage", "Main"))
+        {
+            <input type="submit" value="Вернуться на главную" />
+        }
+    </div>
+</body>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Laba4._5_OOP.Storage.Entity.Worker>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width" />
+        <title>ListReaders</title>
+    </head>
+    <body>
+        <div>
+            <h1>Работники</h1><br />
+            @if (Convert.ToInt32(ViewBag.Count) != 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <label>Имя: </label>@item.Name<br />
+                    <label>Библиотека: </label>@item.Library.Name<br />
+                    <label>Должность: </label>@item.Position<br />
+                    <label>Зарплата: </label>@item.Salary<br />
+
+                    <form action="/Worker/UpdateWorker/@item.Id">
+                        <button name="id">Редактировать работника</button><br />
+                    </form>
+
+                    @using (Html.BeginForm("Delete", "Worker"))
+                    {
+                        <button name="id" value=@item.Id>Удалить работника</button><br /><br />
+                    }
+                }
+            }
+            else
+            {
+                <label>Работников нет</label><br /><br />
+            }
+
+        </div>
+        <form action="/Worker/AllListWorkers">
+            <button type="submit">Вернуться к списку</button><br />
+        </form>
+
+    </body>

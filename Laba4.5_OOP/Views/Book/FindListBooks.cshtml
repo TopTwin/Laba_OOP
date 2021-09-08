@@ -1,0 +1,43 @@
+﻿@model IReadOnlyCollection<Laba4._5_OOP.Storage.Entity.Book>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width" />
+    <title>ListBooks</title>
+</head>
+<body>
+    <div>
+        <h1>Книги</h1>
+        @if (Convert.ToInt32(ViewBag.Count) != 0)
+        {
+            @foreach (var item in Model)
+            {
+                <label>Библиотека: </label>@item.category.Library.Name<br />
+                <label>Категория: </label>@item.category.Name<br />
+                <label>Название: </label>@item.Name<br />
+                <label>Автор: </label>@item.author.Name<br />
+                @using (Html.BeginForm("GoingToCategory", "Book"))
+                {
+                    <input type="hidden" name="id" value=@item.category.Id />
+                    <button name="id_lib" value=@item.category.LibraryId>Перейти к категории этой книги</button><br />
+                }
+                @using (Html.BeginForm("Delete", "Book"))
+                {
+                    <input name="NameView" type="hidden" value="ListAllBooks" />
+                    <button name="id" value=@item.Id>Удалить книгу</button><br /><br />
+                }
+            }
+        }
+        else
+        {
+            <label>Книг нет</label><br /><br /><br />
+        }
+        <form action="/Book/ListAllBooks">
+            <button type="submit">Вернуться к списку</button><br />
+        </form>
+    </div>
+</body>

@@ -1,0 +1,20 @@
+﻿@model Laba4._5_OOP.Storage.Entity.Book
+
+<body>
+    <div>
+        @using (Html.BeginForm("AddNameBook", "Book"))
+        {
+            <label>Введите название книги: </label>
+            if (Model != null)
+            {
+                <input type="text" name="name" value=@Model.Name /><br />
+            }
+            else
+            {
+                <input type="text" name="name" /><br />
+            }
+
+            <button>Добавить</button>
+        }
+    </div>
+</body>

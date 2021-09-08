@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MainPage</title>
+</head>
+<body>
+    <div>
+        <form action="/Reader/ListReadersLib">
+            <button>Список читателей</button><br />
+        </form>
+        <form action="/Category/ListCategoriesLib">
+            <button>Категории</button><br />
+        </form>
+        <form action="/Author/ListAllAuthors">
+            <button>Список авторов</button><br />
+        </form>
+        <form action="/Worker/ListLibraryWorkers">
+            <button>Список работников</button><br />
+        </form>
+        <form action="/CopyOfBook/ListCopyOfBook">
+            <button>Список Выданных книг</button><br />
+        </form>
+        <br /><br />
+        @using (Html.BeginForm("MainPage", "Main"))
+        {
+            <input type="submit" value="Вернуться на главную" />
+        }
+    </div>
+
+</body>

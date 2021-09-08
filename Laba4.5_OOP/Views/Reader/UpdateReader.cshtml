@@ -1,0 +1,29 @@
+﻿@model Laba_OOP.Storage.Entity.Reader
+@{
+    ViewData["Title"] = "UpdateReader";
+}
+
+<h1>UpdateReader</h1>
+
+<body>
+    <div>
+        @using (Html.BeginForm("Update", "Reader", FormMethod.Post))
+        {
+            <input id="id_reader" name="id_reader" type="hidden" value=@Model.Id>
+
+            <label>Имя читателя: </label>
+            <input id="Name" type="text" name="Name" value=@Model.Name><br />
+            <label>Фамилия читателя: </label>
+            <input id="SecondName" type="text" name="SecondName" value=@Model.LastName><br />
+
+            <input type="submit" value="Обновить информацию" /><br /><br />
+        }
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+        @using (Html.BeginForm("MainPage", "Main"))
+        {
+            <input type="submit" value="Вернуться на главную" />
+        }
+    </div>
+</body>

@@ -1,0 +1,42 @@
+﻿@model Laba_OOP.Storage.Entity.Reader
+@{
+    ViewData["Title"] = "PageOfReader";
+}
+
+<h1>PageOfReader</h1>
+
+<body>
+    <label>Имя читателя: </label>@Model.Name<br />
+    <label>Фамилия читателя: </label>@Model.LastName<br />
+    <label>Дата регистрации: </label>@Model.Registration<br /><br />
+    <form action="/Reader/UpdateReader/@Model.Id">
+        <button>Редактировать читателя</button><br />
+    </form>
+    <label>Книги читателя</label><br />
+    @if (ViewBag.Count == 0)
+    {
+        <label>Книг нет</label>
+    }
+    else
+    {
+        @foreach (var item in ViewBag.Books)
+        {
+            <label>Название: </label>@item.Name<br />
+            <label>Автор: </label>@item.author.Name<br />
+            <label>Категория: </label>@item.category.Name<br />
+            @using (Html.BeginForm("DeleteBook", "Reader"))
+            {
+                <button name="id_book" value=@item.Id>Удалить книгу</button><br /><br />
+            }
+        }
+    }
+
+    @using (Html.BeginForm("AddBookForReader", "Reader"))
+    {
+        <input type="submit" value="Добавить книгу" /><br /><br />
+    }
+
+<form action="/Library/PageOfLibrary">
+    <button type="submit">Вернуться к библиотеке</button><br />
+</form>
+</body>

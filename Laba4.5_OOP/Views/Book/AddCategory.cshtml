@@ -1,0 +1,22 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+
+
+<body>
+    <div>
+        <h1>Добавить категорию</h1>
+
+
+        @using (Html.BeginForm("AddingCategory", "Book", FormMethod.Post))
+        {
+            <label>Название категории</label>
+            <input type="text" name="Name"><br />
+
+            <button >Добавить категорию</button><br /><br />
+        }
+
+    </div>
+</body>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Laba4._5_OOP.Storage.Entity.Category>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width" />
+        <title>ListAuthors</title>
+    </head>
+    <body>
+        <div>
+            <h1>Категории</h1><br />
+
+            @if (Convert.ToInt32(ViewBag.Count) != 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <label>Название: </label>@item.Name<br />
+                    <label>Количество книг: </label>@item.Quantity<br />
+
+                    @using (Html.BeginForm("GoingToCategory", "Book"))
+                    {
+                        <input type="hidden" name="id" value=@item.Id />
+                        <button name="id_lib" value=@item.LibraryId>Книги категории</button><br />
+                    }
+
+                    <form action="/Category/UpdateCategory/@item.Id">
+                        <button>Редактировать категорию</button><br />
+                    </form>
+                    @using (Html.BeginForm("Delete", "Category"))
+                    {
+                        <input type="hidden" name="NameView" value="ListCategoriesLib" />
+                        <button name="id" value=@item.Id>Удалить категорию</button><br /><br />
+                    }
+                }
+            }
+            else
+            {
+                <label>Категорий нет</label><br /><br />
+            }
+
+        </div>
+        @using (Html.BeginForm("AddCategory", "Category"))
+        {
+            <button name="NameView" value="ListCategoriesLib">Добавить категорию</button><br /><br /><br />
+        }
+
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+    </body>

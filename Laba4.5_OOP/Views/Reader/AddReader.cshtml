@@ -1,0 +1,34 @@
+﻿@model Laba_OOP.Manager.Readers.CreateOrUpdateReaderRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <h1>Добавить читателя</h1>
+
+
+        @using (Html.BeginForm("Add", "Reader", FormMethod.Post))
+        {
+            <label>Имя читателя</label>
+            <input id="Name" type="text" name="Name" /><br />
+            <label>Фамилия читателя</label>
+            <input id="SecondName" type="text" name="SecondName" /><br />
+
+            <button name="NameView" value=@ViewBag.NameView>Добавить читателя</button><br /><br />
+        }
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+﻿@model Laba4._5_OOP.Storage.Entity.Author
+@{
+    ViewData["Title"] = "UpdateAuthor";
+}
+
+    <h1>UpdateAuthor</h1>
+
+<body>
+    <div>
+        @using (Html.BeginForm("Update", "Author", FormMethod.Post))
+        {
+            <input id="id" name="id" type="hidden" value=@Model.Id>
+
+            <label>Имя автора: </label>
+            <input id="Name" type="text" name="Name" value=@Model.Name><br />
+            <label>Годы жизни: </label>
+            <input id="DateLife" name="DateLife" type="text" value=@Model.DateLife/><br />
+            <label>Биография: </label>
+            <input id="Biography" name="Biography" type="text" value=@Model.Biography /><br />
+
+            <input type="submit" value="Обновить информацию" /><br /><br />
+        }
+            @using (Html.BeginForm("MainPage", "Main"))
+            {
+                <input type="submit" value="Вернуться на главную" />
+            }
+        </div>
+</body>

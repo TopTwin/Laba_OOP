@@ -1,0 +1,46 @@
+﻿
+<body>
+    <div>
+
+        @using (Html.BeginForm("NameBook", "Book"))
+        {
+            <button>Поменять название книги</button><br />
+        }
+        <form action="/Book/ListAuthors">
+            <button>Выбрать автора</button><br />
+        </form>
+        <form action="/Book/ListCategory">
+            <button>Выбрать категорию</button><br />
+        </form>
+        <label>Все поля обязательны!</label><br />
+        @if (ViewBag.BookName != null)
+        {
+            <label>Название книги:</label> @ViewBag.BookName<br />
+        }
+        else
+        {
+            <label>Названия нет</label><br />
+        }
+        @if (ViewBag.BookAuthor != null)
+        {
+            <label>Автор:</label> @ViewBag.BookAuthor<br />
+        }
+        else
+        {
+            <label>Автора нет</label><br />
+        }
+        @if (ViewBag.BookCategory != null)
+        {
+            <label>Категория книги:</label> @ViewBag.BookCategory<br />
+        }
+        else
+        {
+            <label>Категории нет</label><br />
+        }
+
+        @using (Html.BeginForm("Update", "Book"))
+        {
+            <button>Редактировать книгу</button>
+        }
+    </div>
+</body>

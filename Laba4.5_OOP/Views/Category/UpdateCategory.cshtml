@@ -1,0 +1,27 @@
+﻿@model Laba4._5_OOP.Storage.Entity.Category
+@{
+    ViewData["Title"] = "UpdateCategory";
+}
+
+    <h1>UpdateCategory</h1>
+
+<body>
+    <div>
+        @using (Html.BeginForm("Update", "Category", FormMethod.Post))
+        {
+            <input id="id" name="id" type="hidden" value=@Model.Id>
+
+            <label>Название категории</label>
+            <input id="Name" type="text" name="Name" value=@Model.Name><br />
+
+            <button name="NameView" value="ListCategoriesLib">Обновить информацию</button><br /><br />
+        }
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+        @using (Html.BeginForm("MainPage", "Main"))
+        {
+            <input type="submit" value="Вернуться на главную" />
+        }
+    </div>
+</body>

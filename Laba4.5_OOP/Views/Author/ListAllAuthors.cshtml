@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Laba4._5_OOP.Storage.Entity.Author>
+ @{
+     Layout = null;
+ }
+
+ <!DOCTYPE html>
+
+ <head>
+     <meta charset="utf-8" name="viewport" content="width=device-width" />
+     <title>ListAuthors</title>
+ </head>
+ <body>
+     <div>
+         <h1>Авторы</h1><br />
+
+         @if (Convert.ToInt32(ViewBag.Count) != 0)
+         {
+             @foreach (var item in Model)
+             {
+                 <label>Имя: </label>@item.Name<br />
+                 <label>Годы жизни: </label>@item.DateLife<br />
+                 <label>Биография</label>@item.Biography<br />
+
+                 <form action="/Author/UpdateAuthor/@item.Id">
+                     <button>Редактировать автора</button><br />
+                 </form>
+                 @using (Html.BeginForm("Delete", "Author"))
+                 {
+                     <button name="id" value=@item.Id>Удалить автора</button><br /><br />
+                 }
+             }
+         }
+         else
+         {
+             <label>Авторов нет</label><br />
+         }
+
+     </div>
+     @using (Html.BeginForm("AddAuthor", "Author"))
+     {
+         <button name="NameView" value="ListAllAuthors">Добавить автора</button><br /><br /><br />
+     }
+
+        <form action="/Library/ListOfLibrary">
+            <button type="submit">Вернуться к библиотекам</button><br />
+        </form>
+
+ </body>

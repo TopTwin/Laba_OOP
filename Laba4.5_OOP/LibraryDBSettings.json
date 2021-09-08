@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    //настройки подключения к серверу SQL
+    "LibraryDbV2.0": "Server=DESKTOP-OLF4O4V\\SQLEXPRESS;Database=Library_DB;Trusted_Connection=True;MultipleActiveResultSets=true;"
+  }
+}

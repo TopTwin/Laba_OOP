@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<body>
+    <div>
+
+        @using (Html.BeginForm("NameBook", "Book"))
+        {
+            <button>Добавить название книги</button><br />
+        }
+        <form action="/Book/ListAuthors">
+            <button>Выбрать автора</button><br />
+        </form>
+        <form action="/Book/ListCategory">
+            <button>Выбрать категорию</button><br />
+        </form>
+        <label>Все поля обязательны!</label><br />
+        @if (ViewBag.BookName != null)
+        {
+            <label>Название книги:</label> @ViewBag.BookName<br />
+        }
+        else
+        {
+            <label>Названия нет</label><br />
+        }
+        @if (ViewBag.BookAuthor != null)
+        {
+            <label>Автор:</label> @ViewBag.BookAuthor<br />
+        }
+        else
+        {
+            <label>Автора нет</label><br />
+        }
+        @if (ViewBag.BookCategory != null)
+        {
+            <label>Категория книги:</label> @ViewBag.BookCategory<br />
+        }
+        else
+        {
+            <label>Категории нет</label><br />
+        }
+
+        @using (Html.BeginForm("Add","Book"))
+        {
+            <button>Добавить книгу</button>
+        }
+    </div>
+</body>

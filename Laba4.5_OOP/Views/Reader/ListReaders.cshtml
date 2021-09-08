@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Laba_OOP.Storage.Entity.Reader>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width" />
+    <title>ListReaders</title>
+</head>
+<body>
+    <div>
+        <h1>Читатели</h1><br />
+
+        @if (Convert.ToInt32(ViewBag.Count) != 0)
+        {
+            @foreach (var item in Model)
+            {
+                <label>Имя: </label>@item.Name<br />
+                <label>Фамилия: </label>@item.LastName<br />
+                <label>Дата регистрации: </label>@item.Registration<br /><br />
+
+                @using (Html.BeginForm("TakingReader", "Reader"))
+                {
+                    <button name="id_reader" value=@item.Id>Выбрать читателя</button><br />
+                }
+                @using (Html.BeginForm("Delete", "Reader"))
+                {
+                    <button name="id_delete_reader" value=@item.Id>Удалить читателя</button><br /><br />
+                }
+            }
+        }
+        else
+        {
+            <label>Читателей нет</label><br /><br /><br />
+        }
+
+    </div>
+    @using (Html.BeginForm("AddReader", "Reader"))
+    {
+        <input type="submit" value="Добавить читателя" /><br />
+    }
+
+    @using (Html.BeginForm("MainPage", "Main"))
+    {
+        <input type="submit" value="Вернуться на главную" />
+    }
+
+</body>

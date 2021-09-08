@@ -1,0 +1,31 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <h1>Добавить категорию</h1>
+
+
+        @using (Html.BeginForm("Add", "Category", FormMethod.Post))
+        {
+            <label>Название категории</label>
+            <input type="text" name="Name"><br />
+
+            <button name="NameView" value=@ViewBag.NameView>Добавить категорию</button><br /><br />
+        }
+
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+    </div>
+</body>
+</html>

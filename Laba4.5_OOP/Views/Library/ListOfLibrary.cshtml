@@ -1,0 +1,43 @@
+﻿@model IReadOnlyCollection<Laba4._5_OOP.Storage.Entity.Library>
+@{
+    ViewData["Title"] = "ListOfLibrary";
+}
+
+<h1>ListOfLibrary</h1>
+
+<body>
+    <div>
+        @foreach (var item in Model)
+        {
+            <label>Название библиотеки</label> @item.Name<br />
+
+            @using (Html.BeginForm("TakingLibrary", "Library"))
+            {
+                <button name="id" value=@item.Id>Перейти к библиотеке</button>
+            }
+
+            @using (Html.BeginForm("Delete", "Library"))
+            {
+                <button name="id" value=@item.Id>Удалить библиотеку</button><br /><br />
+            }
+        }
+        @using (Html.BeginForm("AddLibrary", "Library"))
+        {
+            <input type="submit" value="Добавить библиотеку" /><br /><br /><br />
+        }
+
+        <form action="/Book/ListAllBooks">
+            <button>Список всех книг</button><br />
+        </form>
+        <form action="/Category/ListAllCategories">
+            <button>Список всех категорий</button><br />
+        </form>
+        <form action="/Worker/AllListWorkers">
+            <button>Список всех работников</button><br /><br />
+        </form>
+        @using (Html.BeginForm("MainPage", "Main"))
+        {
+            <input type="submit" value="Вернуться на главную" />
+        }
+    </div>
+</body>

@@ -1,0 +1,32 @@
+﻿@model IReadOnlyCollection<Laba4._5_OOP.Storage.Entity.CopyOfBook>
+@{
+    ViewData["Title"] = "ListCopyOfBook";
+}
+
+<h1>ListCopyOfBook</h1>
+
+<body>
+    <div>
+        <h1>Выданные книги</h1>
+
+        @if (Model == null)
+        {
+            <label>Выданных книг нет</label><br />
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <label>Библиотека: </label>@item.Reader.Library.Name<br />
+                <label>Категория: </label>@item.Book.category.Name<br />
+                <label>Название: </label>@item.Book.Name<br />
+                <label>Автор: </label>@item.Book.author.Name<br />
+                <label>Имя читателя: </label>@item.Reader.Name<br />
+                <label>Фамилия читателя: </label>@item.Reader.LastName<br /><br /><br />
+            }
+        }
+    <form action="/Library/PageOfLibrary">
+        <button type="submit">Вернуться к библиотеке</button><br />
+    </form>
+    </div>
+</body>
